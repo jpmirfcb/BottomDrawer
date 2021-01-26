@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BottomDrawerSample.BottomDrawer.BottomDrawer"
+             x:Name="this">
+    <ContentView.Resources>
+        <Color x:Key="Gray-600">#788396</Color>
+    </ContentView.Resources>
+    <ContentView.Content>
+      <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+          <BoxView Color="#4B000000" Opacity="0" InputTransparent="True" x:Name="Backdrop" x:FieldModifier="protected">
+              <BoxView.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+              </BoxView.GestureRecognizers>
+          </BoxView>
+          <!--BottomDrawer-->
+          <Frame
+              x:Name="BottomToolbar"
+              HeightRequest="200"
+              VerticalOptions="End"
+              BackgroundColor="White"
+              CornerRadius="20"
+              TranslationY="260"
+              Padding="15,6">
+              <Frame.GestureRecognizers>
+                  <PanGestureRecognizer PanUpdated="PanGestureRecognizer_OnPanUpdated"/>
+              </Frame.GestureRecognizers>
+              <StackLayout HorizontalOptions="CenterAndExpand">
+                  <BoxView CornerRadius="2" 
+                           HeightRequest="4" 
+                           WidthRequest="50"
+                           BackgroundColor="{StaticResource Gray-600}" 
+                           HorizontalOptions="Center"/>
+
+                  <Label Text="{Binding Title, Source={x:Reference this}}" 
+                         HorizontalOptions="Center" FontSize="18" FontAttributes="Bold"/>
+                  <ScrollView>
+                      <TableView Intent="Settings"
+                                 VerticalOptions="End"
+                                 BackgroundColor="White">
+                          <TableSection x:Name="TableSection">
+                          </TableSection>
+                      </TableView>
+                  </ScrollView>
+              </StackLayout>
+
+
+          </Frame>
+      </Grid>
+    </ContentView.Content>
+</ContentView>

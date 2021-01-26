@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bottomDrawer="clr-namespace:BottomDrawerSample.BottomDrawer;assembly=BottomDrawerSample"
+             x:Class="BottomDrawerSample.MainPage"
+             x:Name="this">
+    <Grid>
+        <Button Text="Show Bottom Drawer" Clicked="Button_OnClicked"
+                VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+        <bottomDrawer:BottomDrawer 
+            x:Name="BottomDrawer"
+            x:FieldModifier="private"
+            Title="Available Options"
+            OnItemTappedCommand="{Binding OnItemSelected, Source={x:Reference this}}">
+            <bottomDrawer:BottomDrawer.ListItems>
+                <bottomDrawer:BottomDrawerOptionsCollection>
+                    <x:String>First Option</x:String>
+                    <x:String>Second Option</x:String>
+                    <x:String>Third Option</x:String>
+                    <x:String>Fourth Option</x:String>
+                    <x:String>Fifth Option</x:String>
+                    <x:String>Sixth Option</x:String>
+                </bottomDrawer:BottomDrawerOptionsCollection>
+            </bottomDrawer:BottomDrawer.ListItems>
+        </bottomDrawer:BottomDrawer>
+    </Grid>
+
+</ContentPage>
